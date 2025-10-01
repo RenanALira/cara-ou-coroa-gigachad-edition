@@ -1,5 +1,5 @@
 import 'package:cara_ou_coroa_gigachad_edition/features/coin/viewmodel/coin_viewmodel.dart';
-import 'package:cara_ou_coroa_gigachad_edition/features/coin/widget/coin_3d_widget.dart';
+import 'package:cara_ou_coroa_gigachad_edition/features/coin/widgets/coin_3d_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
