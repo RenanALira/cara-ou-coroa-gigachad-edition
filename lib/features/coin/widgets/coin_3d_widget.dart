@@ -1,4 +1,5 @@
 import 'package:cara_ou_coroa_gigachad_edition/features/coin/utils/constants/animation_name.dart';
+import 'package:cara_ou_coroa_gigachad_edition/shared/contants/color_palette.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_3d_controller/flutter_3d_controller.dart';
 
@@ -63,7 +64,7 @@ class Coin3DWidgetState extends State<Coin3DWidget> {
       src: 'assets/3d_models/um_real.glb',
       controller: coinAnimationController,
       onLoad: (_) => widget.onModelLoaded(),
-      progressBarColor: Theme.of(context).colorScheme.primary,
+      progressBarColor: ColorPalette.golden,
     );
   }
 }
