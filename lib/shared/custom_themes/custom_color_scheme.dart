@@ -4,21 +4,23 @@ import 'package:flutter/material.dart';
 class CustomColorScheme {
   static ColorScheme lightColorScheme = ColorScheme(
     brightness: Brightness.light,
-    primary: ColorPalette.primary,
-    onPrimary: ColorPalette.white1,
-    secondary: ColorPalette.secondary,
+    primary: ColorPalette.green,
+    onPrimary: ColorPalette.white2,
+    secondary: ColorPalette.greenOpacity,
     onSecondary: ColorPalette.black1,
-    tertiary: ColorPalette.tertiary,
-    onTertiary: ColorPalette.black1,
+    secondaryContainer: ColorPalette.greenOpacity,
+    onSecondaryContainer: ColorPalette.black1,
     error: ColorPalette.golden,
     onError: ColorPalette.black1,
-    surface: ColorPalette.white1,
+    surface: ColorPalette.white2,
     onSurface: ColorPalette.black1,
   );
 
   static ColorScheme darkColorScheme = lightColorScheme.copyWith(
     brightness: Brightness.dark,
+    onSecondary: ColorPalette.white2,
+    onSecondaryContainer: ColorPalette.white2,
     surface: ColorPalette.black1,
-    onSurface: ColorPalette.white1,
+    onSurface: ColorPalette.white2,
   );
 }
