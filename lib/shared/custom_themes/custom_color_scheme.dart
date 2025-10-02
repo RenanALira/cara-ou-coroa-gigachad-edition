@@ -12,7 +12,7 @@ class CustomColorScheme {
     onSecondaryContainer: ColorPalette.black1,
     error: ColorPalette.golden,
     onError: ColorPalette.black1,
-    surface: ColorPalette.white2,
+    surface: ColorPalette.white1,
     onSurface: ColorPalette.black1,
   );
 
