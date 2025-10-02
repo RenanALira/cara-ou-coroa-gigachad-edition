@@ -49,7 +49,7 @@ class _CoinViewState extends State<CoinView> {
                   label: Text('Girar'.toUpperCase()),
                   icon: Icon(Icons.autorenew_outlined),
                 ),
-                FilledButton.tonalIcon(
+                TextButton.icon(
                   style: FilledButton.styleFrom(fixedSize: Size(200, 25)),
                   onPressed: !coinViewModel.coin3DModelIsLoaded || coinViewModel.isSpinning
                       ? null
