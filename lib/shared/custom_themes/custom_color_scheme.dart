@@ -14,6 +14,7 @@ class CustomColorScheme {
     onError: ColorPalette.black1,
     surface: ColorPalette.white1,
     onSurface: ColorPalette.black1,
+    outline: ColorPalette.silver,
   );
 
   static ColorScheme darkColorScheme = lightColorScheme.copyWith(
