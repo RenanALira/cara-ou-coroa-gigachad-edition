@@ -7,9 +7,9 @@
         <compositeConfiguration>
           <compositeBuild compositeDefinitionSource="SCRIPT">
             <builds>
-              <build path="C:/dev/flutter/packages/flutter_tools/gradle" name="gradle">
+              <build path="$PROJECT_DIR$/../../../../dev/flutter/packages/flutter_tools/gradle" name="gradle">
                 <projects>
-                  <project path="C:/dev/flutter/packages/flutter_tools/gradle" />
+                  <project path="$PROJECT_DIR$/../../../../dev/flutter/packages/flutter_tools/gradle" />
                 </projects>
               </build>
             </builds>
@@ -20,10 +20,12 @@
         <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
         <option name="modules">
           <set>
-            <option value="$USER_HOME$/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_inappwebview_android-1.1.3/android" />
-            <option value="C:/dev/flutter/packages/flutter_tools/gradle" />
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/../../../../dev/flutter/packages/flutter_tools/gradle" />
+            <option value="$PROJECT_DIR$/../../../../flutter_cache/hosted/pub.dev/flutter_inappwebview_android-1.1.3/android" />
+            <option value="$PROJECT_DIR$/../../../../flutter_cache/hosted/pub.dev/flutter_native_splash-2.4.6/android" />
+            <option value="$PROJECT_DIR$/../../../../flutter_cache/hosted/pub.dev/shared_preferences_android-2.4.14/android" />
           </set>
         </option>
       </GradleProjectSettings>
