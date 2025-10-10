@@ -5,6 +5,7 @@ import 'package:cara_ou_coroa_gigachad_edition/shared/contants/routes.dart';
 import 'package:cara_ou_coroa_gigachad_edition/shared/custom_themes/custom_theme.dart';
 import 'package:cara_ou_coroa_gigachad_edition/features/coin/viewmodel/coin_viewmodel.dart';
 import 'package:cara_ou_coroa_gigachad_edition/features/coin/view/coin_view.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
     return Consumer<SettingsViewmodel>(
       builder: (context, settingsViewModel, _) {
         return MaterialApp(
+          debugShowCheckedModeBanner: !kReleaseMode,
           title: "Cara ou Coroa: Gigachad Edition",
           themeMode: settingsViewModel.activeTheme,
           theme: CustomTheme.lightTheme,
