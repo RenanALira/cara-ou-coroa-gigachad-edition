@@ -1,5 +1,6 @@
 import 'package:cara_ou_coroa_gigachad_edition/features/coin/viewmodel/coin_viewmodel.dart';
 import 'package:cara_ou_coroa_gigachad_edition/features/coin/widgets/coin_3d_widget.dart';
+import 'package:cara_ou_coroa_gigachad_edition/features/settings/viewmodel/settings_viewmodel.dart';
 import 'package:cara_ou_coroa_gigachad_edition/shared/contants/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,12 +33,14 @@ class _CoinViewState extends State<CoinView> {
         selector: (context, coinViewModel) => coinViewModel.flipCount,
         builder: (context, flipCount, child) {
           final coinViewModel = context.read<CoinViewModel>();
+          final settingsViewModel = context.read<SettingsViewmodel>();
 
           return Coin3DWidget(
             key: coinKey,
             currentAnimation: coinViewModel.currentAnimation,
             onModelLoaded: coinViewModel.onModelLoaded,
             onAnimationCompleted: coinViewModel.onAnimationCompleted,
+            audioEnabled: settingsViewModel.audioEnabled,
           );
         },
       ),

@@ -6,6 +6,7 @@ class CustomColorScheme {
     brightness: Brightness.light,
     primary: ColorPalette.green,
     onPrimary: ColorPalette.white2,
+    onPrimaryContainer: ColorPalette.black2,
     secondary: ColorPalette.greenOpacity,
     onSecondary: ColorPalette.black1,
     secondaryContainer: ColorPalette.greenOpacity,
@@ -14,7 +15,9 @@ class CustomColorScheme {
     onError: ColorPalette.black1,
     surface: ColorPalette.white1,
     onSurface: ColorPalette.black1,
+    onSurfaceVariant: ColorPalette.black2,
     outline: ColorPalette.silver,
+    outlineVariant: ColorPalette.silver,
   );
 
   static ColorScheme darkColorScheme = lightColorScheme.copyWith(
@@ -22,6 +25,7 @@ class CustomColorScheme {
     onSecondary: ColorPalette.white2,
     onSecondaryContainer: ColorPalette.white2,
     surface: ColorPalette.black1,
-    onSurface: ColorPalette.white2,
+    onSurface: ColorPalette.white1,
+    onSurfaceVariant: ColorPalette.white2,
   );
 }

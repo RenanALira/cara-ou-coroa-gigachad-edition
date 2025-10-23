@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 class SettingsViewmodel extends ChangeNotifier {
   final SettingsService _settingsService = SettingsService();
   ThemeMode _activeTheme;
+  bool _audioEnabled = true;
 
-  SettingsViewmodel({required ThemeMode activeTheme}) : _activeTheme = activeTheme;
+  SettingsViewmodel({required ThemeMode activeTheme}) : _activeTheme = activeTheme {
+    _settingsService.getAudioEnabled().then((audioEnabled) => _audioEnabled = audioEnabled ?? true);
+  }
 
   ThemeMode get activeTheme => _activeTheme;
 
@@ -14,5 +17,14 @@ class SettingsViewmodel extends ChangeNotifier {
     notifyListeners();
 
     return await _settingsService.setTheme(themeMode);
+  }
+
+  bool get audioEnabled => _audioEnabled;
+
+  Future<bool> setAudioEnabled(bool audioEnabled) async {
+    _audioEnabled = audioEnabled;
+    notifyListeners();
+
+    return await _settingsService.setAudioEnabled(audioEnabled);
   }
 }

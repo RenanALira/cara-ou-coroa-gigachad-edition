@@ -9,4 +9,9 @@ class SettingsService {
 
   Future<bool> setTheme(ThemeMode theme) =>
       _sharedPreferencesService.setInt(SharedPreferencesKeys.selectedTheme, theme.index);
+
+  Future<bool?> getAudioEnabled() => _sharedPreferencesService.getBool(SharedPreferencesKeys.audioEnabled);
+
+  Future<bool> setAudioEnabled(bool audioEnabled) =>
+      _sharedPreferencesService.setBool(SharedPreferencesKeys.audioEnabled, audioEnabled);
 }

@@ -15,4 +15,12 @@ class SharedPreferencesService {
   Future<bool> setInt(String key, int value) async {
     return await _instance.then((instance) => instance.setInt(key, value));
   }
+
+  Future<bool?> getBool(String key) async {
+    return await _instance.then((instance) => instance.getBool(key));
+  }
+
+  Future<bool> setBool(String key, bool value) async {
+    return await _instance.then((instance) => instance.setBool(key, value));
+  }
 }

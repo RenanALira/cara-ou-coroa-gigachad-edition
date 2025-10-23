@@ -3,43 +3,48 @@ import 'package:cara_ou_coroa_gigachad_edition/features/coin/utils/constants/ani
 import 'package:flutter/material.dart';
 
 class CoinViewModel extends ChangeNotifier {
+  bool _coin3DModelIsLoaded = false;
+  bool _isSpinning = false;
+  bool _headsIsUp = true;
+  AnimationName? _currentAnimation;
+  int _flipCount = 0;
+
   CoinViewModel();
 
-  bool coin3DModelIsLoaded = false;
-  bool isSpinning = false;
-  bool headsIsUp = true;
-  AnimationName? currentAnimation;
-  int flipCount = 0;
+  bool get coin3DModelIsLoaded => _coin3DModelIsLoaded;
+  bool get isSpinning => _isSpinning;
+  AnimationName? get currentAnimation => _currentAnimation;
+  int get flipCount => _flipCount;
 
   void spin() {
-    if (isSpinning) return;
+    if (_isSpinning) return;
 
-    isSpinning = true;
+    _isSpinning = true;
     notifyListeners();
 
     final bool isRandomNumberEven = RandomHelper.getRandomNumber(999).isEven;
 
-    if (headsIsUp) {
-      currentAnimation = isRandomNumberEven ? AnimationName.headsToHeads : AnimationName.headsToTails;
+    if (_headsIsUp) {
+      _currentAnimation = isRandomNumberEven ? AnimationName.headsToHeads : AnimationName.headsToTails;
     } else {
-      currentAnimation = isRandomNumberEven ? AnimationName.tailsToTails : AnimationName.tailsToHeads;
+      _currentAnimation = isRandomNumberEven ? AnimationName.tailsToTails : AnimationName.tailsToHeads;
     }
 
-    flipCount++;
+    _flipCount++;
     notifyListeners();
   }
 
   void onModelLoaded() {
-    coin3DModelIsLoaded = true;
+    _coin3DModelIsLoaded = true;
     notifyListeners();
   }
 
   void onAnimationCompleted() {
-    if ([AnimationName.headsToTails, AnimationName.tailsToHeads].contains(currentAnimation)) {
-      headsIsUp = !headsIsUp;
+    if ([AnimationName.headsToTails, AnimationName.tailsToHeads].contains(_currentAnimation)) {
+      _headsIsUp = !_headsIsUp;
     }
 
-    isSpinning = false;
+    _isSpinning = false;
     notifyListeners();
   }
 }
