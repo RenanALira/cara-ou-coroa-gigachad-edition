@@ -33,6 +33,7 @@ class Coin3DWidgetState extends State<Coin3DWidget> {
     coinAnimationController = Flutter3DController();
 
     audioPlayer = AudioPlayer(playerId: 'coin_flip_player');
+    audioPlayer.setSourceAsset('audios/coin_flip.mp3');
     audioPlayer.setReleaseMode(ReleaseMode.stop);
   }
 
@@ -60,7 +61,7 @@ class Coin3DWidgetState extends State<Coin3DWidget> {
       coinAnimationController.playAnimation(animationName: widget.currentAnimation?.value, loopCount: 1);
 
       if (widget.audioEnabled) {
-        audioPlayer.play(AssetSource('audios/coin_flip.mp3'));
+        audioPlayer.seek(Duration.zero).then((value) => audioPlayer.resume());
       }
 
       Future.delayed(Duration(seconds: 1, milliseconds: 300)).then((_) {
