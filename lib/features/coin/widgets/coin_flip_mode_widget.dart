@@ -34,10 +34,10 @@ class CoinFlipModeWidget extends StatelessWidget {
             final (isLoaded, isSpinning) = options;
 
             return GestureDetector(
-              onVerticalDragUpdate: !isLoaded || isSpinning
+              onVerticalDragEnd: !isLoaded || isSpinning
                   ? null
                   : (gestureDetails) {
-                      if (gestureDetails.delta.dy <= -30) {
+                      if (gestureDetails.primaryVelocity != null && gestureDetails.primaryVelocity! < -400) {
                         context.read<CoinViewModel>().spin();
                       }
                     },
