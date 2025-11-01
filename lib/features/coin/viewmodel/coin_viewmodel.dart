@@ -6,6 +6,7 @@ class CoinViewModel extends ChangeNotifier {
   bool _coin3DModelIsLoaded = false;
   bool _isSpinning = false;
   bool _headsIsUp = true;
+  bool _isFlipMode = true;
   AnimationName? _currentAnimation;
   int _flipCount = 0;
 
@@ -13,6 +14,7 @@ class CoinViewModel extends ChangeNotifier {
 
   bool get coin3DModelIsLoaded => _coin3DModelIsLoaded;
   bool get isSpinning => _isSpinning;
+  bool get isFlipMode => _isFlipMode;
   AnimationName? get currentAnimation => _currentAnimation;
   int get flipCount => _flipCount;
 
@@ -45,6 +47,14 @@ class CoinViewModel extends ChangeNotifier {
     }
 
     _isSpinning = false;
+    notifyListeners();
+  }
+
+  void toggleFlipMode() {
+    _coin3DModelIsLoaded = false;
+    _headsIsUp = true;
+    _isFlipMode = !_isFlipMode;
+
     notifyListeners();
   }
 }

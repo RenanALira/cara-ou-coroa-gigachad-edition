@@ -1,6 +1,6 @@
 import 'package:cara_ou_coroa_gigachad_edition/features/coin/viewmodel/coin_viewmodel.dart';
-import 'package:cara_ou_coroa_gigachad_edition/features/coin/widgets/coin_3d_widget.dart';
-import 'package:cara_ou_coroa_gigachad_edition/features/settings/viewmodel/settings_viewmodel.dart';
+import 'package:cara_ou_coroa_gigachad_edition/features/coin/widgets/coin_inspection_mode_widget.dart';
+import 'package:cara_ou_coroa_gigachad_edition/features/coin/widgets/coin_flip_mode_widget.dart';
 import 'package:cara_ou_coroa_gigachad_edition/shared/contants/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,8 +13,6 @@ class CoinView extends StatefulWidget {
 }
 
 class _CoinViewState extends State<CoinView> {
-  final GlobalKey<Coin3DWidgetState> coinKey = GlobalKey<Coin3DWidgetState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,52 +27,22 @@ class _CoinViewState extends State<CoinView> {
           ),
         ],
       ),
-      body: Selector<CoinViewModel, int>(
-        selector: (context, coinViewModel) => coinViewModel.flipCount,
-        builder: (context, flipCount, child) {
-          final coinViewModel = context.read<CoinViewModel>();
-          final settingsViewModel = context.read<SettingsViewmodel>();
-
-          return Coin3DWidget(
-            key: coinKey,
-            currentAnimation: coinViewModel.currentAnimation,
-            onModelLoaded: coinViewModel.onModelLoaded,
-            onAnimationCompleted: coinViewModel.onAnimationCompleted,
-            audioEnabled: settingsViewModel.audioEnabled,
-          );
+      body: Selector<CoinViewModel, bool>(
+        selector: (context, coinViewModel) => coinViewModel.isFlipMode,
+        builder: (context, isFlipMode, child) {
+          return isFlipMode ? CoinFlipModeWidget() : CoinInspectionModeWidget();
         },
       ),
       floatingActionButton: Consumer<CoinViewModel>(
         builder: (context, coinViewModel, child) {
-          return Column(
-            spacing: 10,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              FilledButton.icon(
-                style: FilledButton.styleFrom(
-                  fixedSize: Size(200, 50),
-                  iconSize: 30,
-                  textStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
-                ),
-                onPressed: !coinViewModel.coin3DModelIsLoaded || coinViewModel.isSpinning
-                    ? null
-                    : () => coinViewModel.spin(),
-                label: Text('Girar'.toUpperCase()),
-                icon: Icon(Icons.autorenew_outlined),
-              ),
-              TextButton.icon(
-                style: FilledButton.styleFrom(fixedSize: Size(200, 25)),
-                onPressed: !coinViewModel.coin3DModelIsLoaded || coinViewModel.isSpinning
-                    ? null
-                    : () => coinKey.currentState?.resetCamera(),
-                label: Text('Centralizar câmera'),
-                icon: Icon(Icons.center_focus_weak_outlined),
-              ),
-            ],
+          return FloatingActionButton(
+            onPressed: () => coinViewModel.toggleFlipMode(),
+            tooltip: "Modo de ${coinViewModel.isFlipMode ? 'inspeção' : 'giro'}",
+            foregroundColor: Theme.of(context).colorScheme.surface,
+            child: Icon(coinViewModel.isFlipMode ? Icons.swipe_outlined : Icons.swipe_up_outlined),
           );
         },
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
