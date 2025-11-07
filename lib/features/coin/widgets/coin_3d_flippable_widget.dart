@@ -1,4 +1,4 @@
-import 'package:audioplayers/audioplayers.dart';
+import 'package:cara_ou_coroa_gigachad_edition/core/services/audio_service.dart';
 import 'package:cara_ou_coroa_gigachad_edition/features/coin/utils/constants/animation_name.dart';
 import 'package:cara_ou_coroa_gigachad_edition/features/coin/widgets/coin_3d_viewer_widget.dart';
 import 'package:flutter/material.dart';
@@ -24,13 +24,10 @@ class Coin3DFlippableWidget extends StatefulWidget {
 
 class Coin3DFlippableWidgetState extends State<Coin3DFlippableWidget> {
   final Flutter3DController coinAnimationController = Flutter3DController();
-  final AudioPlayer audioPlayer = AudioPlayer(playerId: 'coin_flip_player');
 
   @override
   void initState() {
     super.initState();
-
-    _initAudio();
   }
 
   @override
@@ -42,21 +39,8 @@ class Coin3DFlippableWidgetState extends State<Coin3DFlippableWidget> {
     }
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-
-    audioPlayer.dispose();
-  }
-
-  void _initAudio() async {
-    await audioPlayer.setSource(AssetSource('audios/coin_flip.mp3'));
-    await audioPlayer.setReleaseMode(ReleaseMode.stop);
-  }
-
   void _playWithAudio() async {
-    await audioPlayer.seek(Duration.zero);
-    audioPlayer.resume();
+    await AudioService.instance.playCoinFlip();
 
     _playAnimation();
   }

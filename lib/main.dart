@@ -1,3 +1,4 @@
+import 'package:cara_ou_coroa_gigachad_edition/core/services/audio_service.dart';
 import 'package:cara_ou_coroa_gigachad_edition/features/settings/service/settings_service.dart';
 import 'package:cara_ou_coroa_gigachad_edition/features/settings/view/settings_view.dart';
 import 'package:cara_ou_coroa_gigachad_edition/features/settings/viewmodel/settings_viewmodel.dart';
@@ -18,6 +19,8 @@ void main() async {
   final SettingsService settingsService = SettingsService();
   final int? storedThemeIndex = await settingsService.getTheme();
   final initialTheme = storedThemeIndex != null ? ThemeMode.values[storedThemeIndex] : ThemeMode.system;
+
+  await AudioService.instance.prewarm();
 
   runApp(
     MultiProvider(
