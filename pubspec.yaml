@@ -1,7 +1,7 @@
 name: cara_ou_coroa_gigachad_edition
 description: "Aplicativo de cara ou coroa, mas com a versão Gigachad da moeda de 1 Real."
 publish_to: 'none'
-version: 2.0.0+4
+version: 3.0.0+5
 
 environment:
   sdk: ^3.9.0
