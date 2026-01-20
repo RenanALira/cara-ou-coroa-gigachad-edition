@@ -17,7 +17,7 @@ class _CoinViewState extends State<CoinView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cara ou Coroa: Gigachad Edition'),
+        title: FittedBox(fit: BoxFit.scaleDown, child: Text('Cara ou Coroa: Gigachad Edition')),
         actions: [
           IconButton(
             onPressed: () {

@@ -9,12 +9,12 @@ class InfoIconTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 90),
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 60),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
-        spacing: 10,
+        spacing: 5,
         children: [
-          Icon(icon, color: Theme.of(context).colorScheme.outline),
+          Icon(icon, size: 30, color: Theme.of(context).colorScheme.outline),
           Text(
             text,
             textAlign: TextAlign.center,
