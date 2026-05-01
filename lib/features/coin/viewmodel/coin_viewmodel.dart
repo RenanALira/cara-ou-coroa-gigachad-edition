@@ -9,6 +9,8 @@ class CoinViewModel extends ChangeNotifier {
   bool _isFlipMode = true;
   AnimationName? _currentAnimation;
   int _flipCount = 0;
+  int _headsScore = 0;
+  int _tailsScore = 0;
 
   CoinViewModel();
 
@@ -17,6 +19,8 @@ class CoinViewModel extends ChangeNotifier {
   bool get isFlipMode => _isFlipMode;
   AnimationName? get currentAnimation => _currentAnimation;
   int get flipCount => _flipCount;
+  int get headsScore => _headsScore;
+  int get tailsScore => _tailsScore;
 
   void spin() {
     if (_isSpinning) return;
@@ -46,7 +50,20 @@ class CoinViewModel extends ChangeNotifier {
       _headsIsUp = !_headsIsUp;
     }
 
+    if (_headsIsUp) {
+      _headsScore++;
+    } else {
+      _tailsScore++;
+    }
+
     _isSpinning = false;
+    notifyListeners();
+  }
+
+  void resetScore() {
+    _headsScore = 0;
+    _tailsScore = 0;
+
     notifyListeners();
   }
 

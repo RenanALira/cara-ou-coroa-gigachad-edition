@@ -14,4 +14,9 @@ class SettingsService {
 
   Future<bool> setAudioEnabled(bool audioEnabled) =>
       _sharedPreferencesService.setBool(SharedPreferencesKeys.audioEnabled, audioEnabled);
+
+  Future<bool?> getScoreEnabled() => _sharedPreferencesService.getBool(SharedPreferencesKeys.scoreEnabled);
+
+  Future<bool> setScoreEnabled(bool scoreEnabled) =>
+      _sharedPreferencesService.setBool(SharedPreferencesKeys.scoreEnabled, scoreEnabled);
 }

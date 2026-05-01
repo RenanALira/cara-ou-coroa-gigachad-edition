@@ -1,6 +1,7 @@
 import 'package:cara_ou_coroa_gigachad_edition/features/coin/viewmodel/coin_viewmodel.dart';
 import 'package:cara_ou_coroa_gigachad_edition/features/coin/widgets/coin_3d_flippable_widget.dart';
 import 'package:cara_ou_coroa_gigachad_edition/features/coin/widgets/info_icon_text_widget.dart';
+import 'package:cara_ou_coroa_gigachad_edition/features/coin/widgets/score_board_widget.dart';
 import 'package:cara_ou_coroa_gigachad_edition/features/settings/viewmodel/settings_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -45,6 +46,10 @@ class CoinFlipModeWidget extends StatelessWidget {
             );
           },
           child: Container(color: Colors.transparent),
+        ),
+        Selector<SettingsViewmodel, bool>(
+          selector: (_, settingsViewmodel) => settingsViewmodel.scoreEnabled,
+          builder: (_, scoreEnabled, _) => scoreEnabled ? const ScoreBoardWidget() : const SizedBox.shrink(),
         ),
       ],
     );

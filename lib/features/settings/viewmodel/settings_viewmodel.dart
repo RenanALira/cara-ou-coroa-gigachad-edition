@@ -5,9 +5,18 @@ class SettingsViewmodel extends ChangeNotifier {
   final SettingsService _settingsService = SettingsService();
   ThemeMode _activeTheme;
   bool _audioEnabled = true;
+  bool _scoreEnabled = true;
 
   SettingsViewmodel({required ThemeMode activeTheme}) : _activeTheme = activeTheme {
-    _settingsService.getAudioEnabled().then((audioEnabled) => _audioEnabled = audioEnabled ?? true);
+    _settingsService.getAudioEnabled().then((audioEnabled) {
+      _audioEnabled = audioEnabled ?? true;
+      notifyListeners();
+    });
+
+    _settingsService.getScoreEnabled().then((scoreEnabled) {
+      _scoreEnabled = scoreEnabled ?? true;
+      notifyListeners();
+    });
   }
 
   ThemeMode get activeTheme => _activeTheme;
@@ -26,5 +35,14 @@ class SettingsViewmodel extends ChangeNotifier {
     notifyListeners();
 
     return await _settingsService.setAudioEnabled(audioEnabled);
+  }
+
+  bool get scoreEnabled => _scoreEnabled;
+
+  Future<bool> setScoreEnabled(bool scoreEnabled) async {
+    _scoreEnabled = scoreEnabled;
+    notifyListeners();
+
+    return await _settingsService.setScoreEnabled(scoreEnabled);
   }
 }
